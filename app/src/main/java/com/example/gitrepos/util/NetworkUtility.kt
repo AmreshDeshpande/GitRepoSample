@@ -55,11 +55,4 @@ object NetworkUtility : LiveData<Boolean>() {
         connectivityManager.unregisterNetworkCallback(networkCallback)
     }
 
-
-    //Check network connection instantly instead of continuous listening using connectivityManager
-    fun isInternetOn(): Boolean {
-        connectivityManager = this.application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = connectivityManager.activeNetworkInfo
-        return activeNetwork != null && activeNetwork.isConnected
-    }
 }

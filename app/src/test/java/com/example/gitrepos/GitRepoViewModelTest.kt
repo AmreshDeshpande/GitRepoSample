@@ -46,10 +46,10 @@ class GitRepoViewModelTest {
         assertEquals(liveDataUnderTest?.observedValues?.size, 1)
 
         //Test loading state
-        val gitRepoDataLoading = liveDataUnderTest?.observedValues?.get(0) as Data
-        assertTrue(gitRepoDataLoading is Data.Loading)
-        assertFalse(gitRepoDataLoading is Data.Success)
-        assertFalse(gitRepoDataLoading is Data.Error)
+        val gitRepoDataLoading = liveDataUnderTest?.observedValues?.get(0) as Status
+        assertTrue(gitRepoDataLoading is Status.Loading)
+        assertFalse(gitRepoDataLoading is Status.Success)
+        assertFalse(gitRepoDataLoading is Status.Error)
     }
 
     @Test
@@ -68,11 +68,11 @@ class GitRepoViewModelTest {
         assertEquals(liveDataUnderTest?.observedValues?.size, 2)
 
         //Test success state
-        val dataSuccess = liveDataUnderTest?.observedValues?.get(1) as Data
-        assertTrue(dataSuccess is Data.Success)
-        assertEquals((dataSuccess as Data.Success).gitData, testGitRepoData)
-        assertFalse(dataSuccess is Data.Error)
-        assertFalse(dataSuccess is Data.Loading)
+        val dataSuccess = liveDataUnderTest?.observedValues?.get(1) as Status
+        assertTrue(dataSuccess is Status.Success)
+        assertEquals((dataSuccess as Status.Success).gitData, testGitRepoData)
+        assertFalse(dataSuccess is Status.Error)
+        assertFalse(dataSuccess is Status.Loading)
     }
 
     @Test
@@ -89,12 +89,12 @@ class GitRepoViewModelTest {
         assertEquals(liveDataUnderTest?.observedValues?.size, 2)
 
         //Test success state
-        val dataError = liveDataUnderTest?.observedValues?.get(1) as Data
-        assertTrue(dataError is Data.Error)
-        assertFalse(dataError is Data.Success)
-        assertFalse(dataError is Data.Loading)
-        assertNotNull((dataError as Data.Error).error.errorMessage)
-        assertEquals((dataError as Data.Error).error.errorMessage, Constants.ERROR_MESSAGE)
+        val dataError = liveDataUnderTest?.observedValues?.get(1) as Status
+        assertTrue(dataError is Status.Error)
+        assertFalse(dataError is Status.Success)
+        assertFalse(dataError is Status.Loading)
+        assertNotNull((dataError as Status.Error).error.errorMessage)
+        assertEquals((dataError as Status.Error).error.errorMessage, Constants.ERROR_MESSAGE)
     }
 
 
@@ -103,9 +103,9 @@ class GitRepoViewModelTest {
 
         val liveData = gitRepoViewModel.getGitRepoData()
         val data = liveData?.value
-        assertFalse(data is Data.Error)
-        assertFalse(data is Data.Success)
-        assertFalse(data is Data.Loading)
+        assertFalse(data is Status.Error)
+        assertFalse(data is Status.Success)
+        assertFalse(data is Status.Loading)
     }
 
 }

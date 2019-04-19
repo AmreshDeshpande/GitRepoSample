@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import com.example.gitrepos.data.Data
+import com.example.gitrepos.data.Status
 import com.example.gitrepos.data.GitRepoViewModel
 import com.example.gitrepos.databinding.ActivityGitRepoBinding
 import com.example.gitrepos.di.DaggerGitRepoComponent
@@ -86,16 +86,16 @@ class GitRepoActivity : AppCompatActivity() {
 
 
         gitRepoViewModel.getGitRepoData()?.observe(this,
-            Observer { data ->
+            Observer { status ->
 
-                when (data) {
-                    is Data.Success -> {
-                        gitRepoAdapter.gitRepoData = data.gitData
+                when (status) {
+                    is Status.Success -> {
+                        gitRepoAdapter.gitRepoData = status.gitData
                         gitRepoAdapter.notifyDataSetChanged()
                         swipeRefresh.isRefreshing = false
                     }
-                    is Data.Error -> {
-                        gitRepoCoordinatorLayout.showSnackBar(data.error.errorMessage)
+                    is Status.Error -> {
+                        gitRepoCoordinatorLayout.showSnackBar(status.error.errorMessage)
                     }
                 }
             })

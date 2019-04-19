@@ -4,15 +4,15 @@ import android.databinding.BindingAdapter
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.View
 import android.widget.ProgressBar
-import com.example.gitrepos.data.Data
+import com.example.gitrepos.data.Status
 
 
 @BindingAdapter(value = ["dataState", "swipeToRefresh"], requireAll = false)
-fun setStateForLoading(progressBar: ProgressBar, data: Data, swipeRefreshLayout: SwipeRefreshLayout) {
+fun setStateForLoading(progressBar: ProgressBar, status: Status, swipeRefreshLayout: SwipeRefreshLayout) {
 
-    progressBar.visibility = when (data) {
+    progressBar.visibility = when (status) {
 
-        Data.Loading -> {
+        Status.Loading -> {
             if (!swipeRefreshLayout.isRefreshing) {
                 View.VISIBLE
             } else

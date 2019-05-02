@@ -6,8 +6,7 @@
         android:layout_height="match_parent"
         android:id="@+id/noConnectionLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:background="@android:color/white">
+        app:layout_constraintLeft_toLeftOf="parent">
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"

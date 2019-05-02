@@ -30,7 +30,7 @@ class GitRepoViewModelTest {
     val taskExecutorRule = InstantTaskExecutorRule()
 
 
-    lateinit var gitRepoViewModel: GitRepoViewModel
+    private lateinit var gitRepoViewModel: GitRepoViewModel
 
     @Before
     fun setUp() {

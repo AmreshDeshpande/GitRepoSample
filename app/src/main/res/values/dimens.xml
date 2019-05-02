@@ -1,6 +1,4 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
-
     <dimen name="card_radius">10dp</dimen>
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="card_height">100dp</dimen>
@@ -8,7 +6,6 @@
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_5">5dp</dimen>
     <dimen name="margin_90">90dp</dimen>
-
 
     <dimen name="profile_image_height">80dp</dimen>
     <dimen name="profile_image_width">80dp</dimen>

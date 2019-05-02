@@ -40,7 +40,6 @@ class StatusRepositoryTest {
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
         dataRepository = DataRepository(gitRepoService)
     }
 

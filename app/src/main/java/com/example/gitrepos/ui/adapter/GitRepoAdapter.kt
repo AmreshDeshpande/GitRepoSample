@@ -20,7 +20,6 @@ class GitRepoAdapter(private val itemClick: (GitRepo?) -> (Unit)) : RecyclerView
 
     override fun getItemCount(): Int {
         return gitRepoData?.size ?: 0
-
     }
 
     override fun onBindViewHolder(gitRepoViewholder: GitRepoViewHolder, position: Int) {

@@ -1,7 +1,7 @@
 package com.example.gitrepos.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import com.example.gitrepos.R
 import com.example.gitrepos.network.model.GitRepo
 import com.example.gitrepos.util.Constants.Companion.GIT_REPO_DATA_KEY
@@ -18,7 +18,6 @@ class GitRepoDetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         showRepoDetails()
-
     }
 
     private fun showRepoDetails() {

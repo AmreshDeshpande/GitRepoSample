@@ -3,6 +3,7 @@ package com.example.gitrepos
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.gitrepos.TestUtility.Companion.getTestGitRepoData
 import com.example.gitrepos.data.*
+import com.example.gitrepos.data.Status.Loading
 import com.example.gitrepos.network.model.ErrorResponse
 import com.example.gitrepos.network.model.GitRepo
 import com.example.gitrepos.util.Constants
@@ -47,7 +48,7 @@ class GitRepoViewModelTest {
 
         //Test loading state
         val gitRepoDataLoading = liveDataUnderTest?.observedValues?.get(0) as Status
-        assertTrue(gitRepoDataLoading is Status.Loading)
+        assertTrue(gitRepoDataLoading == Loading)
         assertFalse(gitRepoDataLoading is Status.Success)
         assertFalse(gitRepoDataLoading is Status.Error)
     }
@@ -72,7 +73,7 @@ class GitRepoViewModelTest {
         assertTrue(dataSuccess is Status.Success)
         assertEquals((dataSuccess as Status.Success).gitData, testGitRepoData)
         assertFalse(dataSuccess is Status.Error)
-        assertFalse(dataSuccess is Status.Loading)
+        assertFalse(dataSuccess == Loading)
     }
 
     @Test
@@ -92,9 +93,9 @@ class GitRepoViewModelTest {
         val dataError = liveDataUnderTest?.observedValues?.get(1) as Status
         assertTrue(dataError is Status.Error)
         assertFalse(dataError is Status.Success)
-        assertFalse(dataError is Status.Loading)
+        assertFalse(dataError == Loading)
         assertNotNull((dataError as Status.Error).error.errorMessage)
-        assertEquals((dataError as Status.Error).error.errorMessage, Constants.ERROR_MESSAGE)
+        assertEquals(dataError.error.errorMessage, Constants.ERROR_MESSAGE)
     }
 
 
@@ -105,7 +106,7 @@ class GitRepoViewModelTest {
         val data = liveData?.value
         assertFalse(data is Status.Error)
         assertFalse(data is Status.Success)
-        assertFalse(data is Status.Loading)
+        assertFalse(data === Loading)
     }
 
 }

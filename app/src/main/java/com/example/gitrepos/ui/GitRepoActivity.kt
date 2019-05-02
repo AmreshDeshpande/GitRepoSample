@@ -83,8 +83,7 @@ class GitRepoActivity : AppCompatActivity() {
     }
 
     private fun getGitRepos() {
-
-
+        
         gitRepoViewModel.getGitRepoData()?.observe(this,
             Observer { status ->
 
